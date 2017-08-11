@@ -6,14 +6,22 @@
     <RuntimeIdentifiers>win10-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;osx.10.12-x64</RuntimeIdentifiers>
 
   </PropertyGroup>
-  
+
+  <!-- Check if we target Windows -->
   <PropertyGroup Condition="($(RuntimeIdentifier.StartsWith('win')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('Windows_NT')) And $(RuntimeIdentifier.Equals('')) ) ">
+    <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
     <DefineConstants>_WINDOWS_, $(RuntimeIdentifier.Replace("-","_").Replace(".","_"))</DefineConstants>
   </PropertyGroup>
+
+  <!-- Check if we target OSX -->
   <PropertyGroup Condition="($(RuntimeIdentifier.StartsWith('osx')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('OSX')) And $(RuntimeIdentifier.Equals('')) ) ">
+    <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
     <DefineConstants>_OSX_, $(RuntimeIdentifier.Replace("-","_").Replace(".","_"))</DefineConstants>
   </PropertyGroup>
+
+  <!-- Check if we target Linux (To many name to check, instead we check if not Windows and not OSX) -->
   <PropertyGroup Condition=" !(($(RuntimeIdentifier.StartsWith('win')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('Windows_NT')) And $(RuntimeIdentifier.Equals('')) )) And !(($(RuntimeIdentifier.StartsWith('osx')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('OSX')) And $(RuntimeIdentifier.Equals('')) ))">
+    <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
     <DefineConstants>_LINUX_, $(RuntimeIdentifier.Replace("-","_").Replace(".","_"))</DefineConstants>
   </PropertyGroup>
 </Project>
