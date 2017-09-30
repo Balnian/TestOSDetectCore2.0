@@ -23,6 +23,9 @@ namespace TestOSDetectCore2._0
 #elif _LINUX_ == ubuntu_16_04_x64
             Console.WriteLine("ubuntu_16_04_x64");
 #endif
+#elif _ANDROID_ 
+            /* Doesn't Detect properly for now but is Official: https://docs.microsoft.com/en-us/dotnet/core/rid-catalog */
+            Console.WriteLine("_ANDROID_");
 #endif
 
         }
