@@ -25,7 +25,7 @@ Only add the following to your .csproj
   </PropertyGroup>
 
   <!-- Check if we target Android (Doesn't Detect properly for now but is Official: https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) -->
-  <!-- (Less check to do because we consider we cannot Dev on Android and anyway there<s no way to detect an Android Platform other then the RID) -->
+  <!-- (Less check to do because we consider we cannot Dev on Android and anyway there's no way to detect an Android Platform other then the RID) -->
   <PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('android')) ">
     <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
     <DefineConstants>_ANDROID_, $(RuntimeIdentifier.Replace("-","_").Replace(".","_"))</DefineConstants>
