@@ -15,13 +15,6 @@
     <IsLinux>False</IsLinux>
   </PropertyGroup>
 
-   
-
-  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
-    <IsOSX Condition="($(RuntimeIdentifier.StartsWith('osx')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $(RuntimeIdentifier.Equals('')) ) ">true</IsOSX>
-    <IsLinux Condition="!(($(RuntimeIdentifier.StartsWith('win')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('Windows_NT')) And $(RuntimeIdentifier.Equals('')) )) And !(($(RuntimeIdentifier.StartsWith('osx')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX))) And $(RuntimeIdentifier.Equals('')) ))">true</IsLinux>
-  </PropertyGroup>
-
   <!-- Check if we target Windows -->
   <PropertyGroup Condition="($(RuntimeIdentifier.StartsWith('win')) And !$(RuntimeIdentifier.Equals('')) ) Or ( $(OS.Equals('Windows_NT')) And $(RuntimeIdentifier.Equals('')) ) ">
     <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
