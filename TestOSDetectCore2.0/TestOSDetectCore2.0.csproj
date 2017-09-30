@@ -37,7 +37,7 @@
     <IsAndroid>True</IsAndroid>
   </PropertyGroup>
 
-  <!-- Check if we target Linux (To many name to check, instead we check if not Windows and not OSX) -->
+  <!-- Check if we target Linux (To many name to check, instead we check if not one of the other OS) -->
   <PropertyGroup Condition=" !$(IsWindows) And !$(IsOSX) And !$(IsAndroid)">
     <!--Replacing '-' and '.' by '_' in Constants because we cannot use those characters in the source files -->
     <DefineConstants>_LINUX_, $(RuntimeIdentifier.Replace("-","_").Replace(".","_"))</DefineConstants>
